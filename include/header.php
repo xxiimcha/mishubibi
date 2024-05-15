@@ -12,7 +12,14 @@
                                 <li class=""><a href="contact.html">Used Cars</a></li>
                                 <li class=""><a href="contact.html">Three Wheelers</a></li>
                                 <li class=""><a href="contact.html">Electric</a></li>
-                                <li class=""><a href="about.php">About Us</a></li>
+                                <li class="active"><a href="javascript:void(0)">About Us <i
+                                        class="ion-ios-arrow-down"></i></a>
+                                    <ul class="hm-dropdown">
+                                        <li><a href="about.php">Who Are We</a></li>
+                                        <li><a href="privacy.php">Privacy Policy</a></li>
+                                        <li><a href="terms.php">Terms and Conditions</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -21,12 +28,14 @@
                     <div class="ht-right_area">
                         <div class="ht-menu">
                             <ul>
+                                <?php if(!isset($_SESSION['user_id'])) { ?>
                                 <li><a href="my-account.html">My Account<i class="fa fa-chevron-down"></i></a>
                                     <ul class="ht-dropdown ht-my_account">
-                                        <li><a href="register.php">Register</a></li>
-                                        <li class="active"><a href="login.php">Login</a></li>
+                                        <li><a href="../register.php">Register <?php echo $_SESSION['user_id'];?></a></li>
+                                        <li class="active"><a href="../login.php">Login</a></li>
                                     </ul>
                                 </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>

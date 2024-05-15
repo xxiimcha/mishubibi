@@ -1,4 +1,6 @@
-<?php include('../include/head.php');?>
+<?php 
+include('../controller/config.php');
+include('../include/head.php');?>
 <body class="template-color-1">
 
     <div class="main-wrapper">

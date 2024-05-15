@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body class="template-color-1">
     <div class="main-wrapper">
         <?php include('include/header.php'); ?>
@@ -141,7 +140,6 @@
     </div>
     <?php include('include/foot.php'); ?>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+vjz3g5fy5VRd4rXTN9fU9ja2lKw1" crossorigin="anonymous"></script>
-</body>
+ </body>
 
 </html>

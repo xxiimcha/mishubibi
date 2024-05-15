@@ -6,7 +6,7 @@
                     <div class="footer-widgets_info">
                         <div class="footer-widgets_logo">
                             <a href="#">
-                                <img src="assets/images/favicon.ico" alt="Uren's Footer Logo">
+                                <img src="assets/images/favicon.ico" alt="Mishubibi Logo" style="max-height: 300px; max-width: 300px;">
                             </a>
                         </div>
                         <div class="widgets-essential_stuff">
