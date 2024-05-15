@@ -12,7 +12,7 @@
                                 <li class=""><a href="contact.html">Used Cars</a></li>
                                 <li class=""><a href="contact.html">Three Wheelers</a></li>
                                 <li class=""><a href="contact.html">Electric</a></li>
-                                <li class=""><a href="contact.html">News & Reviews</a></li>
+                                <li class=""><a href="about.php">About Us</a></li>
                             </ul>
                         </nav>
                     </div>
