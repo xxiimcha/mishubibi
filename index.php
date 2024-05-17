@@ -48,7 +48,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="banner-item img-hover_effect">
                             <a href="shop-left-sidebar.html">
-                                <img class="img-full" src="assets/images/banner/2-3.jpg" alt="Uren's Banner">
+                                <div style="background-image: url('images/brand-new.jpg'); background-repeat: no-repeat; background-position: center center; background-size: cover; min-height: 435px;"></div>
+                        
                             </a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <a href="javascript:void(0)">
-                                            <img src="assets/images/brand/1.jpg" alt="Uren's Brand Image">
+                                            <img src="images/brands/toyota.png" alt="Toyota">
                                         </a>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <a href="javascript:void(0)">
-                                            <img src="assets/images/brand/2.jpg" alt="Uren's Brand Image">
+                                            <img src="images/brands/ford.png" alt="Uren's Brand Image">
                                         </a>
                                     </div>
                                 </div>
