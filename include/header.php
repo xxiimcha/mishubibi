@@ -31,7 +31,7 @@
                                 <?php if(!isset($_SESSION['user_id'])) { ?>
                                 <li><a href="my-account.html">My Account<i class="fa fa-chevron-down"></i></a>
                                     <ul class="ht-dropdown ht-my_account">
-                                        <li><a href="../register.php">Register <?php echo $_SESSION['user_id'];?></a></li>
+                                        <li><a href="../register.php">Register</a></li>
                                         <li class="active"><a href="../login.php">Login</a></li>
                                     </ul>
                                 </li>
