@@ -12,7 +12,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                     Add New Car
                 </a>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="../pages/car_list.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                     Car List
                 </a>

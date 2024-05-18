@@ -1,4 +1,5 @@
 <?php include('../include/head.php');?>
+
 <body class="sb-nav-fixed">
     <?php include('../include/nav.php');?>
     <div id="layoutSidenav">
@@ -18,6 +19,24 @@
                         <div class="card-body">
                             <div id="message"></div>
                             <form id="carForm" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="vehicleName" class="form-label">Vehicle Name</label>
+                                    <input type="text" class="form-control" id="vehicleName" name="vehicle_name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="brand" class="form-label">Brand</label>
+                                    <input type="text" class="form-control" id="brand" name="brand" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="vehicleType" class="form-label">Vehicle Type</label>
+                                    <select class="form-control" id="vehicleType" name="vehicle_type" required>
+                                        <option value="Cars">Cars</option>
+                                        <option value="Motorcycles">Motorcycles</option>
+                                        <option value="Trucks">Trucks</option>
+                                        <option value="Three Wheelers">Three Wheelers</option>
+                                        <option value="Electric">Electric</option>
+                                    </select>
+                                </div>
                                 <ul class="nav nav-tabs" id="carSpecsTabs" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active" id="dimensions-tab" data-bs-toggle="tab" data-bs-target="#dimensions" type="button" role="tab" aria-controls="dimensions" aria-selected="true">Dimensions & Capacity</button>
@@ -262,8 +281,9 @@
                     data: formData,
                     contentType: false,
                     processData: false,
+                    dataType: 'json',
                     success: function(response) {
-                        $('#message').html('<div class="alert alert-success" role="alert">Car details submitted successfully!</div>');
+                        $('#message').html('<div class="alert alert-success" role="alert">' + response.message + '</div>');
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         $('#message').html('<div class="alert alert-danger" role="alert">An error occurred while submitting the form. Please try again.</div>');

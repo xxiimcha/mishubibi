@@ -6,7 +6,7 @@
                     <div class="main-menu_area position-relative">
                         <nav class="main-nav">
                             <ul>
-                                <li class=""><a href="contact.html">Cars</a></li>
+                                <li class=""><a href="pages/cars.php">Cars</a></li>
                                 <li class=""><a href="contact.html">Motorcycles</a></li>
                                 <li class=""><a href="contact.html">Trucks</a></li>
                                 <li class=""><a href="contact.html">Used Cars</a></li>
@@ -50,7 +50,7 @@
                     <div class="main-menu_area position-relative">
                         <nav class="main-nav">
                             <ul>
-                                <li class=""><a href="contact.html">Cars</a></li>
+                                <li class=""><a href="pages/cars.php">Cars</a></li>
                                 <li class=""><a href="contact.html">Motorcycles</a></li>
                                 <li class=""><a href="contact.html">Trucks</a></li>
                                 <li class=""><a href="contact.html">Used Cars</a></li>
