@@ -45,7 +45,7 @@ if (!$car) {
                                 "asNavFor": ".sp-img_slider-nav"
                                 }'>
                                     <div class="single-slide zoom">
-                                        <img src="<?php echo htmlspecialchars($car['car_image']); ?>" alt="<?php echo htmlspecialchars($car['vehicle_name']); ?>">
+                                        <img src="<?php echo '../admin/pages/' . htmlspecialchars($car['car_image']); ?>" alt="<?php echo htmlspecialchars($car['vehicle_name']); ?>">
                                     </div>
                                 </div>
                                 <div class="sp-img_slider-nav slick-slider-nav uren-slick-slider slider-navigation_style-3" data-slick-options='{
