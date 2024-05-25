@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $plate_number = mysqli_real_escape_string($conn, $_POST['plate_number']);
     $car_color = mysqli_real_escape_string($conn, $_POST['car_color']);
     $mileage = mysqli_real_escape_string($conn, $_POST['mileage']);
-    $listingType = mysqli_real_escape_string($conn, $_POST['listingType']);
+    $condition = mysqli_real_escape_string($conn, $_POST['condition']);
+    $price = mysqli_real_escape_string($conn, $_POST['price']);
     
     // Handle file upload
     $fileNames = [];
@@ -32,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileNamesJson = json_encode($fileNames);
 
     // SQL Query to insert data into the database
-    $list_car = "INSERT INTO `car_list` (`lister`, `make`, `model`, `year`, `variant`, `color`, `plate_number`, `car_color`, `mileage`, `transaction_type`, `image_paths`) 
- VALUES ('{$_SESSION['user_id']}', '$make', '$model', '$year', '$variant', '$color', '$plate_number', '$car_color', '$mileage', '$listingType', '$fileNamesJson')";
+    $list_car = "INSERT INTO `car_list` (`lister`, `make`, `model`, `year`, `variant`, `color`, `plate_number`, `car_color`, `mileage`, `car_condition`, `price`, `image_paths`) 
+ VALUES ('{$_SESSION['user_id']}', '$make', '$model', '$year', '$variant', '$color', '$plate_number', '$car_color', '$mileage', '$condition', '$price', '$fileNamesJson')";
 
     // Execute the query
     if ($conn->query($list_car) === TRUE) {

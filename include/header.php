@@ -28,13 +28,21 @@
                     <div class="ht-right_area">
                         <div class="ht-menu">
                             <ul>
-                                <?php if(!isset($_SESSION['user_id'])) { ?>
-                                <li><a href="my-account.html">My Account<i class="fa fa-chevron-down"></i></a>
-                                    <ul class="ht-dropdown ht-my_account">
-                                        <li><a href="../register.php">Register</a></li>
-                                        <li class="active"><a href="../login.php">Login</a></li>
-                                    </ul>
-                                </li>
+                                <?php if (!isset($_SESSION['user_id'])) { ?>
+                                    <li>
+                                        <a href="#">My Account<i class="fa fa-chevron-down"></i></a>
+                                        <ul class="ht-dropdown ht-my_account">
+                                            <li><a href="register.php">Register</a></li>
+                                            <li class="active"><a href="login.php">Login</a></li>
+                                        </ul>
+                                    </li>
+                                <?php } else { ?>
+                                    <li>
+                                        <a href="#">Welcome, User<i class="fa fa-chevron-down"></i></a>
+                                        <ul class="ht-dropdown ht-my_account">
+                                            <li><a href="../controller/logout.php">Logout</a></li>
+                                        </ul>
+                                    </li>
                                 <?php } ?>
                             </ul>
                         </div>

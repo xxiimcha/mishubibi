@@ -1,18 +1,21 @@
 <?php
-include('../include/head.php');?>
+session_start();
+include('../include/head.php'); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
-input {
+input, select {
   padding: 10px;
   width: 100%;
   font-size: 17px;
   border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
+/* Mark input boxes that get an error on validation: */
+input.invalid, select.invalid {
   background-color: #ffdddd;
 }
 
@@ -38,15 +41,59 @@ input.invalid {
   opacity: 1;
 }
 
-/* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #04AA6D;
+}
+
+/* Additional Styles */
+.form-heading {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.tab h4 {
+  margin-bottom: 20px;
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.btn-custom {
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.btn-primary-custom {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary-custom:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary-custom {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #5a6268;
+}
+
+.steps-indicator {
+  text-align: center;
+  margin-top: 30px;
 }
 </style>
 <body class="template-color-1">
 
     <div class="main-wrapper">
-        <?php include('../include/header.php');?>
+        <?php include('../include/header.php'); ?>
         <div class="breadcrumb-area">
             <div class="container">
                 <div class="breadcrumb-content">
@@ -55,72 +102,83 @@ input.invalid {
             </div>
         </div>
         <div class="uren-login-register_area">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
-                    </div>
+                    <div class="col-md-2"></div>
                     <div class="col-md-8">
-                    <form id="carSubmissionForm" class="login-form" action="../controller/list_car.php" method="post" enctype="multipart/form-data">
-                        
-                        <div class="tab"><h4>Vehicle Details</h4>
-                            <label for="make">Make</label>
-                            <input type="text" id="make" name="make" placeholder="Make" class="form-control mb-2" required>
-                            
-                            <label for="model">Model</label>
-                            <input type="text" id="model" name="model" placeholder="Model" class="form-control mb-2" required>
-                            
-                            <label for="year">Year</label>
-                            <input type="number" id="year" name="year" placeholder="Year" class="form-control mb-2" required>
-                            
-                            <label for="variant">Variant</label>
-                            <input type="text" id="variant" name="variant" placeholder="Variant" class="form-control mb-2">
-                            
-                            <label for="color">Color</label>
-                            <input type="text" id="color" name="color" placeholder="Color" class="form-control mb-2">
-                        </div>
-
-                        <div class="tab">
-                            <h4>Car Condition</h4>
-                            <input type="text" name="plate_number" placeholder="Plate Number" class="form-control mb-2">
-                            <input type="text" name="car_color" placeholder="Car Color" class="form-control mb-2">
-                            <input type="number" name="mileage" placeholder="Mileage" class="form-control mb-2">
-                        </div>
-
-                        <div class="tab">
-                            <label for="listingType">Listing Type:</label>
-                            <select id="listingType" name="listingType" class="form-control mb-2">
-                                <option value="1">For Sale</option>
-                                <option value="2">For Rent</option>
-                            </select>
-
-                            <h4>Car Images</h4>
-                            <input type="file" name="car_images[]" multiple class="form-control mb-2">
-                        </div>
-                        <div style="overflow:auto;">
-                            <div style="float:right;">
-                                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                        <form id="carSubmissionForm" class="login-form" action="../controller/list_car.php" method="post" enctype="multipart/form-data">
+                            <div class="tab">
+                                <div class="form-heading">
+                                    <h4>Vehicle Details</h4>
+                                </div>
+                                <label for="make">Make</label>
+                                <input type="text" id="make" name="make" placeholder="Make" class="form-control mb-2" required>
+                                
+                                <label for="model">Model</label>
+                                <input type="text" id="model" name="model" placeholder="Model" class="form-control mb-2" required>
+                                
+                                <label for="year">Year</label>
+                                <input type="number" id="year" name="year" placeholder="Year" class="form-control mb-2" required>
+                                
+                                <label for="variant">Variant</label>
+                                <input type="text" id="variant" name="variant" placeholder="Variant" class="form-control mb-2">
+                                
+                                <label for="color">Color</label>
+                                <input type="text" id="color" name="color" placeholder="Color" class="form-control mb-2">
                             </div>
-                        </div>
 
-                        <!-- Circles which indicates the steps of the form: -->
-                        <div style="text-align:center;margin-top:40px;">
-                        <span class="step"></span>
-                        <span class="step"></span>
-                        <span class="step"></span>
-                        <span class="step"></span>
-                        </div>
+                            <div class="tab">
+                                <div class="form-heading">
+                                    <h4>Car Condition</h4>
+                                </div>
+                                <label for="plate_number">Plate Number</label>
+                                <input type="text" id="plate_number" name="plate_number" placeholder="Plate Number" class="form-control mb-2">
+                                
+                                <label for="car_color">Car Color</label>
+                                <input type="text" id="car_color" name="car_color" placeholder="Car Color" class="form-control mb-2">
+                                
+                                <label for="mileage">Mileage</label>
+                                <input type="number" id="mileage" name="mileage" placeholder="Mileage" class="form-control mb-2">
+                                
+                                <label for="condition">Condition</label>
+                                <select id="condition" name="condition" class="form-control mb-2" required>
+                                    <option value="">Select Condition</option>
+                                    <option value="new">New</option>
+                                    <option value="used">Used</option>
+                                    <option value="certified_pre_owned">Certified Pre-Owned</option>
+                                </select>
+                            </div>
 
+                            <div class="tab">
+                                <div class="form-heading">
+                                    <h4>Pricing and Images</h4>
+                                </div>
+                                <label for="price">Price</label>
+                                <input type="number" id="price" name="price" placeholder="Price" class="form-control mb-2" required>
+
+                                <label for="car_images">Car Images</label>
+                                <input type="file" id="car_images" name="car_images[]" multiple class="form-control mb-2">
+                            </div>
+                            <div class="button-container">
+                                <button type="button" id="prevBtn" class="btn btn-secondary-custom btn-custom" onclick="nextPrev(-1)">Previous</button>
+                                <button type="button" id="nextBtn" class="btn btn-primary-custom btn-custom" onclick="nextPrev(1)">Next</button>
+                            </div>
+
+                            <!-- Circles which indicate the steps of the form: -->
+                            <div class="steps-indicator">
+                                <span class="step"></span>
+                                <span class="step"></span>
+                                <span class="step"></span>
+                            </div>
                         </form>
                     </div>
-                    <div class="col-md-2">
-                    </div>
+                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
     </div>
 
-<?php include('../include/foot.php');?>
+<?php include('../include/foot.php'); ?>
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -178,6 +236,14 @@ function validateForm() {
       valid = false;
     }
   }
+  // Validate the select field if it is in the current tab
+  if (currentTab == 1) {
+    var conditionSelect = document.getElementById("condition");
+    if (conditionSelect.value == "") {
+      conditionSelect.className += " invalid";
+      valid = false;
+    }
+  }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -195,3 +261,5 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 </script>
+</body>
+</html>
