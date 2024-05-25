@@ -15,10 +15,10 @@ if (!$car) {
     exit;
 }
 ?>
-
 <body class="template-color-1">
     <div class="main-wrapper">
         <?php include('../include/header.php');?>
+
         <div class="breadcrumb-area">
             <div class="container">
                 <div class="breadcrumb-content">
@@ -60,7 +60,6 @@ if (!$car) {
                                         {"breakpoint":768, "settings": {"slidesToShow": 3}},
                                         {"breakpoint":575, "settings": {"slidesToShow": 2}}
                                     ]'>
-                                    <!-- Add more images if available -->
                                 </div>
                             </div>
                         </div>
@@ -105,100 +104,32 @@ if (!$car) {
                         <div class="sp-product-tab_nav">
                             <div class="product-tab">
                                 <ul class="nav product-menu">
-                                    <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a>
-                                    </li>
+                                    <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a></li>
                                     <li><a data-toggle="tab" href="#specification"><span>Specification</span></a></li>
-                                    <li><a data-toggle="tab" href="#reviews"><span>Reviews (1)</span></a></li>
+                                    <li><a data-toggle="tab" href="#reviews"><span>Reviews</span></a></li>
                                 </ul>
                             </div>
                             <div class="tab-content uren-tab_content">
-                                <div id="description" class="tab-pane active show" role="tabpanel">
-                                    <div class="product-description">
-                                        <ul>
-                                            <li>
-                                                <strong>Description</strong>
-                                                <span><?php echo nl2br(htmlspecialchars($car['description'])); ?></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div id="specification" class="tab-pane" role="tabpanel">
-                                    <table class="table table-bordered specification-inner_stuff">
-                                        <tbody>
-                                            <tr>
-                                                <td>Fuel Tank Capacity</td>
-                                                <td><?php echo htmlspecialchars($car['fuel_tank_capacity']); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Engine</td>
-                                                <td><?php echo htmlspecialchars($car['engine']); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Power</td>
-                                                <td><?php echo htmlspecialchars($car['power']); ?></td>
-                                            </tr>
-                                            <!-- Add more specifications as needed -->
-                                        </tbody>
-                                    </table>
-                                </div>
                                 <div id="reviews" class="tab-pane" role="tabpanel">
                                     <div class="tab-pane active" id="tab-review">
                                         <form class="form-horizontal" id="form-review">
                                             <div id="review">
                                                 <table class="table table-striped table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 50%;"><strong>Customer</strong></td>
-                                                            <td class="text-right">15/09/20</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <p>Good product! Thank you very much</p>
-                                                                <div class="rating-box">
-                                                                    <ul>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                    <tbody id="reviews-list">
+                                                        <!-- Existing reviews will be loaded here -->
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <h2>Write a review</h2>
-                                            <div class="form-group required">
-                                                <div class="col-sm-12 p-0">
-                                                    <label>Your Email <span class="required">*</span></label>
-                                                    <input class="review-input" type="email" name="con_email" id="con_email" required>
-                                                </div>
-                                            </div>
                                             <div class="form-group required second-child">
                                                 <div class="col-sm-12 p-0">
                                                     <label class="control-label">Share your opinion</label>
-                                                    <textarea class="review-textarea" name="con_message" id="con_message"></textarea>
-                                                    <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+                                                    <textarea class="review-textarea" name="review_text" id="review_text"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group last-child required">
                                                 <div class="col-sm-12 p-0">
-                                                    <div class="your-opinion">
-                                                        <label>Your Rating</label>
-                                                        <span>
-                                                            <select class="star-rating">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                            </select>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="uren-btn-ps_right">
-                                                    <button class="uren-btn-2">Continue</button>
+                                                    <button type="button" id="submit-review" class="uren-btn-2">Continue</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -210,9 +141,64 @@ if (!$car) {
                 </div>
             </div>
         </div><br><br>
-        <?php include('../include/footer.php');?>          
+        <?php include('../include/footer.php');?>
     </div>
-<?php include('../include/foot.php');?>
+    <?php include('../include/foot.php');?>
+
+    <script>
+    $(document).ready(function(){
+        var carId = <?php echo $carId; ?>;
+
+        function loadReviews() {
+            $.ajax({
+                url: '../controller/fetch_review.php',
+                type: 'POST',
+                data: { car_id: carId },
+                success: function(response) {
+                    var reviews = JSON.parse(response);
+                    var reviewsHtml = '';
+                    for (var i = 0; i < reviews.length; i++) {
+                        reviewsHtml += '<tr>';
+                        reviewsHtml += '<td style="width: 50%;"><strong>Customer</strong></td>';
+                        reviewsHtml += '<td class="text-right">' + new Date(reviews[i].date_created).toLocaleDateString() + '</td>';
+                        reviewsHtml += '</tr>';
+                        reviewsHtml += '<tr>';
+                        reviewsHtml += '<td colspan="2">';
+                        reviewsHtml += '<p>' + reviews[i].review_text + '</p>';
+                        reviewsHtml += '</td>';
+                        reviewsHtml += '</tr>';
+                    }
+                    $('#reviews-list').html(reviewsHtml);
+                }
+            });
+        }
+
+        $('#submit-review').click(function(){
+            var reviewText = $('#review_text').val();
+            
+            $.ajax({
+                url: '../controller/add_review.php',
+                type: 'POST',
+                data: {
+                    car_id: carId,
+                    review_text: reviewText
+                },
+                success: function(response){
+                    var res = JSON.parse(response);
+                    if(res.status == 'success'){
+                        alert(res.message);
+                        loadReviews(); // Reload the reviews without reloading the page
+                    } else {
+                        alert(res.message);
+                    }
+                }
+            });
+        });
+
+        // Load reviews on page load
+        loadReviews();
+    });
+    </script>
 </body>
 </html>
 

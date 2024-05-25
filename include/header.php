@@ -6,12 +6,12 @@
                     <div class="main-menu_area position-relative">
                         <nav class="main-nav">
                             <ul>
-                                <li class=""><a href="pages/cars.php">Cars</a></li>
-                                <li class=""><a href="contact.html">Motorcycles</a></li>
-                                <li class=""><a href="contact.html">Trucks</a></li>
-                                <li class=""><a href="contact.html">Used Cars</a></li>
-                                <li class=""><a href="contact.html">Three Wheelers</a></li>
-                                <li class=""><a href="contact.html">Electric</a></li>
+                                <li class=""><a href="../pages/cars.php">Cars</a></li>
+                                <li class=""><a href="../pages/motor.php">Motorcycles</a></li>
+                                <li class=""><a href="../pages/truck.php">Trucks</a></li>
+                                <li class=""><a href="../pages/cars.php">Used Cars</a></li>
+                                <li class=""><a href="../pages/three.php">Three Wheelers</a></li>
+                                <li class=""><a href="../pages/electric.php">Electric</a></li>
                                 <li class="active"><a href="javascript:void(0)">About Us <i
                                         class="ion-ios-arrow-down"></i></a>
                                     <ul class="hm-dropdown">

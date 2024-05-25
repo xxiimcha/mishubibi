@@ -30,11 +30,11 @@
                                 <div class="mb-3">
                                     <label for="vehicleType" class="form-label">Vehicle Type</label>
                                     <select class="form-control" id="vehicleType" name="vehicle_type" required>
-                                        <option value="Cars">Cars</option>
-                                        <option value="Motorcycles">Motorcycles</option>
-                                        <option value="Trucks">Trucks</option>
-                                        <option value="Three Wheelers">Three Wheelers</option>
-                                        <option value="Electric">Electric</option>
+                                        <option value="cars">Cars</option>
+                                        <option value="motor">Motorcycles</option>
+                                        <option value="trucks">Trucks</option>
+                                        <option value="three">Three Wheelers</option>
+                                        <option value="electric">Electric</option>
                                     </select>
                                 </div>
                                 <ul class="nav nav-tabs" id="carSpecsTabs" role="tablist">

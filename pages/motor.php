@@ -54,7 +54,7 @@ include('../include/head.php');
                         </div>
                         <div class="shop-product-wrap grid gridview-3 listfullwidth img-hover-effect_area row">
                             <?php
-                            $sql = "SELECT id, vehicle_name, brand, vehicle_type, car_image, power FROM cars WHERE vehicle_type = 'cars'";
+                            $sql = "SELECT id, vehicle_name, brand, vehicle_type, car_image, power FROM cars WHERE vehicle_type = 'motor'";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
