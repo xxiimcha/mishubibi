@@ -237,6 +237,66 @@ include('../include/head.php');
                             compareHtml += '<td>' + cars[i].drive_type + '</td>';
                         }
                         compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Torque</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].torque + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>RPM at Max Power</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].rpm_at_max_power + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>RPM at Max Torque</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].rpm_at_max_torque + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Number of Doors</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].no_of_doors + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Seating Capacity</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].seating_capacity + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Fuel Type</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].fuel_type + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Front Brake Type</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].front_brake_type + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Rear Brake Type</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].rear_brake_type + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Front Suspension</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].front_suspension + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Rear Suspension</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].rear_suspension + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Tyre Type</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].tyre_type + '</td>';
+                        }
+                        compareHtml += '</tr>';
+                        compareHtml += '<tr><td>Tyre Size</td>';
+                        for (var i = 0; i < cars.length; i++) {
+                            compareHtml += '<td>' + cars[i].tyre_size + '</td>';
+                        }
+                        compareHtml += '</tr>';
                         // Add more rows as necessary for each feature
                         compareHtml += '</tbody></table>';
                         $('#compare-container').html(compareHtml);
